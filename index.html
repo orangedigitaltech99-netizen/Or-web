@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orange Digital Tech - Web Design & Digital Marketing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        
+             }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            padding-bottom: 0.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+         .logo {
+             display: flex;
+             align-items: center;
+             gap: 10px;
+             font-size: 1.5rem;
+             font-weight: bold;
+             color: #f97316;
+                    
+             }
+
+         .logo-icon {
+            
+             width: 40px;
+             height: 40px;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             transition: transform 0.3s ease;
+         }
+
+         .logo-icon:hover {
+             transform: scale(1.05);
+         }
+
+         .logo-icon svg {
+             width: 100%;
+             height: 100%;
+         }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f97316;
+        }
+
+        /* Mobile menu toggle (hidden on desktop) */
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            padding: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .menu-toggle:active,
+        .menu-toggle:hover {
+            background: #f3f4f6;
+        }
+
+        /* Mobile menu (collapsed by default) */
+        .mobile-menu {
+            display: none;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-top: 1px solid #e5e7eb;
+            background: #fff;
+        }
+        .mobile-menu li { border-bottom: 1px solid #f3f4f6; }
+        .mobile-menu a {
+            display: block;
+            padding: 14px 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        .mobile-menu a:hover { color: #f97316; background: #fafafa; }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
+        }
+
+         /* Hero Section */
+         .hero {
+             /* Center content within viewport minus fixed navbar height */
+             min-height: calc(100vh - 72px);
+             background: linear-gradient(135deg, #f97316 0%, #f59e0b 100%);
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             text-align: center;
+             color: white;
+             position: relative;
+             overflow: hidden;
+             padding-top: 24px;
+             padding-bottom: 24px;
+             image src:"img_marketing.jpg";
+         }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            text-wrap: balance;
+           
+        }
+
+        .hero .highlight {
+            color: #fbbf24;
+            <img src= "img_marketing.jpg;" alt="Flowers in Chania">
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            
+        }   
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #f97316;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fbbf24;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            opacity: 0.8;
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.125rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+         .text-gradient {
+             background: linear-gradient(135deg, #f97316, #f59e0b);
+             -webkit-background-clip: text;
+             -webkit-text-fill-color: transparent;
+             background-clip: text;
+         }
+
+        /* About Section */
+        .about {
+            background: #f8fafc;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1.125rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+         .about-visual {
+             background: linear-gradient(135deg, #f97316, #f59e0b);
+             padding: 3rem;
+             border-radius: 20px;
+             color: white;
+             text-align: center;
+         }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+         .service-icon {
+             width: 60px;
+             height: 60px;
+             background: linear-gradient(135deg, #f97316, #f59e0b);
+             border-radius: 12px;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             margin-bottom: 1.5rem;
+             color: white;
+             font-size: 1.5rem;
+         }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background: #f8fafc;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+         .portfolio-image {
+             height: 200px;
+             background: linear-gradient(135deg, #f97316, #f59e0b);
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             color: white;
+             font-size: 3rem;
+         }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-content h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 12px;
+        }
+
+         .contact-icon {
+             width: 50px;
+             height: 50px;
+             background: linear-gradient(135deg, #f97316, #f59e0b);
+             border-radius: 10px;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             color: white;
+         }
+
+        .contact-form {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #f97316;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #f97316;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* When navbar has mobile-open, show the mobile menu */
+            .navbar.mobile-open + .mobile-menu-wrapper .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: clamp(1.4rem, 7vw, 2rem) !important;
+                line-height: 1.2 !important;
+                margin-bottom: 0.75rem !important;
+                word-break: normal;
+                hyphens: auto;
+                overflow-wrap: anywhere;
+            }
+
+            .hero-content { padding-left: 16px; padding-right: 16px; }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            /* Slightly reduce the deduction for smaller navbar on mobile */
+            .hero { min-height: calc(100vh - 64px); }
+        }
+
+        /* Extra-small phones */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: clamp(1.3rem, 8vw, 1.75rem) !important;
+                line-height: 1.2 !important;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero h1 {
+                font-size: 1.4rem !important;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                 <div class="logo">
+                     <div class="logo-icon">
+                         <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                             <defs>
+                                 <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                                     <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="rgba(0,0,0,0.2)"/>
+                                 </filter>
+                             </defs>
+                             <!-- G letter (Orange) - Main shape -->
+                             <path d="M20 4 C11 4 4 11 4 20 C4 29 11 36 20 36 C29 36 36 29 36 20 C36 11 29 4 20 4 Z M20 8 C26 8 32 14 32 20 C32 26 26 32 20 32 C14 32 8 26 8 20 C8 14 14 8 20 8 Z M20 12 L20 20 L28 20 L28 24 L20 24 L20 32 L16 32 L16 8 L20 8 Z" 
+                                   fill="#f97316" 
+                                   filter="url(#shadow)"/>
+                             <!-- S letter (Sky Blue) - Intertwined -->
+                             <path d="M22 10 C24 10 26 12 26 14 C26 16 24 18 22 18 L18 18 C16 18 14 20 14 22 C14 24 16 26 18 26 L22 26 C24 26 26 28 26 30 C26 32 24 34 22 34 L18 34 C14 34 10 30 10 26 L10 22 C10 18 14 14 18 14 L22 14 C24 14 26 12 26 10 C26 8 24 6 22 6 L18 6 C14 6 10 10 10 14 L10 18 C10 22 14 26 18 26 L22 26 C24 26 26 24 26 22 C26 20 24 18 22 18 L18 18 C16 18 14 16 14 14 C14 12 16 10 18 10 Z" 
+                                   fill="#0ea5e9" 
+                                   opacity="0.9"/>
+                         </svg>
+                     </div>
+                     Orange Digital Tech
+                 </div>
+                <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <a href="#contact" class="btn-primary">Get Started</a>
+            </div>
+        </div>
+    </nav>
+    <!-- Mobile menu container (appears below navbar on small screens) -->
+    <div class="mobile-menu-wrapper">
+        <ul class="mobile-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li style="padding: 16px 20px;"><a href="#contact" class="btn-primary" style="display:inline-block; width:100%; text-align:center;">Get Started</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <h1>We Design. <span class="highlight">We Market.</span> We Grow.</h1>
+                <p>Transform your digital presence with our creative web design and strategic digital marketing solutions.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn-primary">Explore Services</a>
+                    <a href="#portfolio" class="btn-secondary">View Portfolio</a>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Happy Clients</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">About <span class="text-gradient">Orange Digital Tech</span></h2>
+            <p class="section-subtitle">We are a passionate team of creative designers and digital marketing experts dedicated to helping businesses thrive in the digital landscape.</p>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Transforming Ideas Into Digital Success</h2>
+                    <p>With years of experience and a commitment to innovation, we transform ideas into powerful digital experiences that drive results. Our team combines creativity with technical expertise to deliver solutions that exceed expectations.</p>
+                    <a href="#contact" class="btn-primary">Learn More About Us</a>
+                </div>
+                <div class="about-visual">
+                    <h3>🚀 Innovation</h3>
+                    <p>Cutting-edge solutions</p>
+                    <h3>🎯 Results</h3>
+                    <p>Measurable business growth</p>
+                    <h3>💡 Creativity</h3>
+                    <p>Unique design approaches</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+    <div class="container">
+    <h2 class="section-title">Our <span class="text-gradient">Services</span></h2>
+     <p class="section-subtitle">We offer comprehensive digital solutions to help your business grow and succeed in the online world.</p>
+            
+     <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Web Design</h3>
+                    <p>Create stunning, responsive websites that captivate your audience and drive conversions.</p>
+                    <a href="#contact" class="btn-primary">Learn More</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Digital Marketing</h3>
+                    <p>Boost your online presence with strategic digital marketing campaigns that deliver results.</p>
+                    <a href="#contact" class="btn-primary">Learn More</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO & Branding</h3>
+                    <p>Enhance your brand visibility and search engine rankings with our comprehensive SEO strategies.</p>
+                    <a href="#contact" class="btn-primary">Learn More</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Solutions</h3>
+                    <p>Optimize your business for mobile users with responsive designs and mobile-first strategies.</p>
+                    <a href="#contact" class="btn-primary">Learn More</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-commerce</h3>
+                    <p>Build powerful online stores that convert visitors into customers with seamless shopping experiences.</p>
+                    <a href="#contact" class="btn-primary">Learn More</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-analytics"></i>
+                    </div>
+                    <h3>Analytics & Growth</h3>
+                    <p>Track performance and optimize your digital strategy with data-driven insights and reporting.</p>
+                    <a href="#contact" class="btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section portfolio">
+        <div class="container">
+            <h2 class="section-title">Our <span class="text-gradient">Portfolio</span></h2>
+            <p class="section-subtitle">Explore our recent projects and see how we've helped businesses achieve their digital goals.</p>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>E-commerce Fashion Store</h3>
+                        <p>Modern e-commerce platform with advanced filtering and checkout system.</p>
+                        <a href="#" class="btn-primary">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Restaurant Marketing Campaign</h3>
+                        <p>Social media campaign that increased customer engagement by 300%.</p>
+                        <a href="#" class="btn-primary">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Tech Startup Branding</h3>
+                        <p>Complete brand identity design for a fintech startup.</p>
+                        <a href="#" class="btn-primary">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get In <span class="text-gradient">Touch</span></h2>
+            <p class="section-subtitle">Ready to start your next project? Let's discuss how we can help bring your vision to life.</p>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p>kiranreddy@orangedigitaltech.com
+                             info@orangedigitaltech.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Call Us</h4>
+                            <p>+91 9849194699</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Visit Us</h4>
+                            <p>No 5 GVR Towers Beside Novotel Hotel Bharathi Nagar,Vijayawada-520010,Andhra Pradesh,India</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Orange Digital Tech</h3>
+                    <p>We design, market, and grow your digital presence with innovative solutions that drive real results for your business.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#services">Web Design</a></li>
+                        <li><a href="#services">Digital Marketing</a></li>
+                        <li><a href="#services">SEO & Branding</a></li>
+                        <li><a href="#services">Mobile Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>info@orangedigitaltech.com</li>
+                        <li>+91 9849194699</li>
+                        <li>No 5 GVR Towers Beside Novotel Hotel Bharathi Nagar,Vijayawada-520010,Andhra Pradesh,India /li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Orange Digital Tech. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animations and interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Navbar background on scroll
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                    navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                    navbar.style.boxShadow = 'none';
+                }
+            });
+
+            // Mobile menu toggle
+            const navbarEl = document.querySelector('.navbar');
+            const toggleBtn = document.querySelector('.menu-toggle');
+            const mobileMenuWrapper = document.querySelector('.mobile-menu-wrapper');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const toggleIcon = () => {
+                const icon = toggleBtn.querySelector('i');
+                const open = navbarEl.classList.contains('mobile-open');
+                toggleBtn.setAttribute('aria-expanded', String(open));
+                icon.className = open ? 'fas fa-times' : 'fas fa-bars';
+            };
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    navbarEl.classList.toggle('mobile-open');
+                    toggleIcon();
+                });
+            }
+            // Close mobile menu on link click
+            if (mobileMenu) {
+                mobileMenu.addEventListener('click', function(e) {
+                    const target = e.target;
+                    if (target && target.tagName === 'A') {
+                        navbarEl.classList.remove('mobile-open');
+                        toggleIcon();
+                    }
+                });
+            }
+
+            // Form submission
+            document.querySelector('form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We\'ll get back to you soon.');
+                this.reset();
+            });
+
+            // Add animation classes on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections
+            document.querySelectorAll('.section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
